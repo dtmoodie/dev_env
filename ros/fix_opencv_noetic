@@ -1,0 +1,6 @@
+apt-get remove \
+  libopencv* \
+  opencv-data \
+  python3-opencv \
+  ros-noetic-vision-opencv \
+  --purge -y

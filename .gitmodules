@@ -1,0 +1,15 @@
+[submodule "opencv/stage0/opencv"]
+	path = opencv/stage0/opencv
+	url = http://www.github.com/opencv/opencv
+[submodule "opencv/stage0/opencv_contrib"]
+	path = opencv/stage0/opencv_contrib
+	url = http://www.github.com/opencv/opencv_contrib
+[submodule "dev/stage0/cereal"]
+	path = dev/stage0/cereal
+	url = https://github.com/USCiLab/cereal
+[submodule "dev/stage0/pybind11"]
+	path = dev/stage0/pybind11
+	url = https://github.com/pybind/pybind11
+[submodule "dev/stage0/dlib"]
+	path = dev/stage0/dlib
+	url = https://github.com/davisking/dlib

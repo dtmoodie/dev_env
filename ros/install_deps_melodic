@@ -1,0 +1,7 @@
+DEBIAN_FRONTEND=noninteractive apt install -y \
+    python-rosdep \
+    python-rosinstall-generator \
+    python-wstool \
+    python-rosinstall \
+    build-essential \
+    python3-pyqt5
