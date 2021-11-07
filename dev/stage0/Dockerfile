@@ -5,6 +5,10 @@ WORKDIR /workspace
 COPY cereal cereal
 COPY pybind11 pybind11
 COPY dlib dlib
+COPY ct ct
+COPY ctext ctext
+COPY minitensor minitensor
+
 
 WORKDIR /workspace/cereal/build
 RUN cmake .. -DJUST_INSTALL_CEREAL=ON && \
@@ -13,7 +17,7 @@ RUN cmake .. -DJUST_INSTALL_CEREAL=ON && \
 
 WORKDIR /workspace/pybind11/build
 RUN cmake .. && \
-    make && \
+    make -j24 && \
     make install
 
 RUN apt-get update && \
@@ -22,6 +26,20 @@ RUN apt-get update && \
 
 WORKDIR /workspace/dlib/build
 RUN cmake .. && \
-    make && \
+    make -j24 && \
     make install
 
+WORKDIR /workspace/ct/build
+RUN cmake .. && \
+    make -j24 && \
+    make install
+
+WORKDIR /workspace/minitensor/build
+RUN cmake .. && \
+    make -j24 && \
+    make install
+
+WORKDIR /workspace/ctext/build
+RUN cmake .. && \
+    make && \
+    make install

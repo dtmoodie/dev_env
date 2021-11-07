@@ -13,3 +13,12 @@
 [submodule "dev/stage0/dlib"]
 	path = dev/stage0/dlib
 	url = https://github.com/davisking/dlib
+[submodule "dev/stage0/ct"]
+	path = dev/stage0/ct
+	url = ssh://dan@percocetpenguin.asuscomm.com:4444/code/ct
+[submodule "dev/stage0/ctext"]
+	path = dev/stage0/ctext
+	url = ssh://dan@percocetpenguin.asuscomm.com:4444/code/ctext
+[submodule "dev/stage0/minitensor"]
+	path = dev/stage0/minitensor
+	url = ssh://dan@percocetpenguin.asuscomm.com:4444/code/minitensor
