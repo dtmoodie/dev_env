@@ -27,8 +27,8 @@ RUN apt install -y \
     libegl1-mesa-dev \
     libglvnd-dev:i386 \
     libgl1-mesa-dev:i386 \
-    libegl1-mesa-dev:i386
-
+    libegl1-mesa-dev:i386 \
+    byobu
 
 ####################################################
 # setup a non-root user, this is important for file permissions if you volume mount code 
