@@ -20,6 +20,11 @@ RUN apt-get update && \
         python3-pip && \
     rm -rf /var/lib/apt/lists/*
 
+# the nvidia base image comes with opencv built in which mucks things up with our cuda build
+RUN rm /usr/lib/x86_64-linux-gnu/libopencv_*
+RUN rm /usr/lib/x86_64-linux-gnu/pkgconfig/opencv.pc
+RUN rm -rf /usr/share/OpenCV
+
 RUN python3 -m pip install numpy 
 
 
