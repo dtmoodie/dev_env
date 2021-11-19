@@ -22,3 +22,15 @@
 [submodule "dev/stage0/minitensor"]
 	path = dev/stage0/minitensor
 	url = ssh://dan@percocetpenguin.asuscomm.com:4444/code/minitensor
+[submodule "ros/image_common"]
+	path = ros/image_common
+	url = https://github.com/ros-perception/image_common
+[submodule "ros/image_transport_plugins"]
+	path = ros/image_transport_plugins
+	url = https://github.com/ros-perception/image_transport_plugins
+[submodule "ros/rqt_image_view"]
+	path = ros/rqt_image_view
+	url = https://github.com/ros-visualization/rqt_image_view
+[submodule "ros/vision_opencv"]
+	path = ros/vision_opencv
+	url = https://github.com/ros-perception/vision_opencv

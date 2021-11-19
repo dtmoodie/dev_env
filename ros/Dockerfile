@@ -22,13 +22,15 @@ RUN ./fix_opencv
 
 # The below are needed if you plan to use Python 3 with ROS.
 RUN pip3 install empy catkin_tools catkin_pkg rospkg setuptools --upgrade
-RUN pip install setuptools --upgrade
+RUN pip install setuptools==58.0.0 --upgrade
 
 # https://github.com/ros/catkin/issues/863
 
-RUN mkdir src && cd src && \
-    git clone https://github.com/ros-perception/image_common && \
-    git clone https://github.com/ros-perception/image_transport_plugins && \
-    git clone https://github.com/ros-visualization/rqt_image_view && \
-    git clone https://github.com/ros-perception/vision_opencv  -b ${distro} && \
-    cd .. && /bin/bash -c "source /opt/ros/${distro}/setup.bash && catkin_make -DOpenCV_DIR=/usr/local/share/OpenCV -DCMAKE_INSTALL_PREFIX=/opt/ros/${distro} -DSETUPTOOLS_DEB_LAYOUT=OFF install"
+WORKDIR /workspace/src
+COPY image_common/ /workspace/src/image_common
+COPY image_transport_plugins/ /workspace/src/image_transport_plugins
+COPY rqt_image_view/ /workspace/src/rqt_image_view
+COPY vision_opencv/ /workspace/src/vision_opencv
+WORKDIR /workspace
+
+RUN /bin/bash -c "source /opt/ros/${distro}/setup.bash && catkin_make -DOpenCV_DIR=/usr/local/share/OpenCV -DCMAKE_INSTALL_PREFIX=/opt/ros/${distro} -DSETUPTOOLS_DEB_LAYOUT=OFF install"
