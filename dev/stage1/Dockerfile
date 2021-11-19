@@ -48,7 +48,7 @@ RUN chmod 777 /tmp/entrypoint.sh
 USER $USERNAME
 ENTRYPOINT ["/tmp/entrypoint.sh"]
 
-
-
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES graphics,utility,compute,display
+# resolves conflict between system install of mpi with conda install, fixes torch import
+ENV LD_LIBRARY_PATH=/opt/hpcx/ompi/lib:$LD_LIBRARY_PATH
