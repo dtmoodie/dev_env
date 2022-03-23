@@ -9,6 +9,7 @@ docker run --gpus=all -it --rm \
  --env="QT_X11_NO_MITSHM=1" \
  --env="XAUTHORITY=${XAUTH}" \
  --env=TERM=xterm-256color \
+ --env="PYTHONPATH=/opt/ros/noetic/lib/python3.8/site-packages:/opt/ros/noetic/lib/python3/dist-packages" \
  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
  --volume="/home/dan/code:/home/dan/code" \
  --volume="/data:/data" \
