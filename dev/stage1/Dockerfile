@@ -28,7 +28,16 @@ RUN apt install -y \
     libglvnd-dev:i386 \
     libgl1-mesa-dev:i386 \
     libegl1-mesa-dev:i386 \
-    byobu
+    byobu \
+    openssh-server \
+    vim \
+    valgrind \
+    nsight-systems \
+    clang-format \
+    clangd
+
+
+RUN echo "Port 25" >> /etc/ssh/sshd_config
 
 ####################################################
 # setup a non-root user, this is important for file permissions if you volume mount code 
@@ -52,3 +61,8 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES graphics,utility,compute,display
 # resolves conflict between system install of mpi with conda install, fixes torch import
 ENV LD_LIBRARY_PATH=/opt/hpcx/ompi/lib:$LD_LIBRARY_PATH
+WORKDIR /home/$user/code
+RUN python3 -m pip install pytorch_lightning timm 
+
+COPY nsight-systems-2022.1.1_2022.1.1.61-1_amd64.deb nsight-systems-2022.1.1_2022.1.1.61-1_amd64.deb
+RUN sudo apt-get install -y ./nsight-systems-2022.1.1_2022.1.1.61-1_amd64.deb

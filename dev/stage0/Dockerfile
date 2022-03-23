@@ -25,7 +25,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/
 
 WORKDIR /workspace/dlib/build
-RUN cmake .. && \
+RUN cmake .. \
+        -DDLIB_USE_MKL_FFT=OFF \
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON && \
     make -j24 && \
     make install
 
