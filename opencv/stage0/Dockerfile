@@ -19,7 +19,9 @@ RUN apt-get update && apt-get install -y \
     libqt5waylandcompositor5-dev \
     qttools5-dev \
     libpython3-dev \
-    python3-pip
+    python3-pip \
+    libopenjp2-7-dev \
+    libceres-dev
 
 RUN python3 -m pip install numpy 
 
@@ -28,13 +30,25 @@ RUN cmake .. \
     -DCMAKE_LIBRARY_PATH=/usr/local/cuda/lib64/stubs \
     -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
     -DWITH_CUDA=ON \
-    -DWITH_CUBLAS=ON \
     -DWITH_CUFFT=ON \
     -DWITH_OPENGL=ON \
     -DWITH_QT=ON \
     -DBUILD_TESTS=OFF \
     -DBUILD_opencv_xfeatures2d=OFF \
-    && make -j24 \
+    -DOpenGL_GL_PREFERENCE=GLVND \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DBUILD_OPENJPEG=ON \
+    -DBUILD_JPEG=ON \
+    -DBUILD_WEBP=ON \
+    -DBUILD_ZLIB=ON \
+    -DPYTHON3_INCLUDE_PATH=/opt/conda/include/python3.8 \
+    -DPYTHON3_NUMPY_INCLUDE_DIRS=/opt/conda/lib/python3.8/site-packages/numpy/core/include \
+    -DPYTHON3_EXECUTABLE=/opt/conda/bin/python3
+
+RUN make -j24 \
     && make install
 
-
+RUN cmake .. \
+    -DCMAKE_BUILD_TYPE=Debug \
+    && make -j24 \
+    && make install
