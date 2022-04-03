@@ -14,6 +14,7 @@ RUN apt-get update && \
         libgstreamer-plugins-bad1.0-dev \
         libgstreamer-opencv1.0-0 \
         libgstreamer-gl1.0-0 \
+        gstreamer1.0-libav \
         gstreamer1.0-tools \
         cmake git wget \
         libqt5*-dev \
