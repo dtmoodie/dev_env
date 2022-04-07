@@ -5,9 +5,11 @@ WORKDIR /workspace
 COPY cereal cereal
 COPY pybind11 pybind11
 COPY dlib dlib
-COPY ct ct
-COPY ctext ctext
-COPY minitensor minitensor
+COPY darknet darknet
+
+#COPY ct ct
+#COPY ctext ctext
+#COPY minitensor minitensor
 
 
 WORKDIR /workspace/cereal/build
@@ -24,6 +26,7 @@ RUN apt-get update && \
     apt-get install -y libopenblas-dev libeigen3-dev && \
     rm -rf /var/lib/apt/lists/
 
+
 WORKDIR /workspace/dlib/build
 RUN cmake .. \
         -DDLIB_USE_MKL_FFT=OFF \
@@ -31,17 +34,5 @@ RUN cmake .. \
     make -j24 && \
     make install
 
-WORKDIR /workspace/ct/build
-RUN cmake .. && \
-    make -j24 && \
-    make install
-
-WORKDIR /workspace/minitensor/build
-RUN cmake .. && \
-    make -j24 && \
-    make install
-
-WORKDIR /workspace/ctext/build
-RUN cmake .. && \
-    make && \
-    make install
+WORKDIR /workspace/darknet
+RUN make -j24 GPU=1 CUDNN=1 CUDNN_HALF=1 LIBSO=1
