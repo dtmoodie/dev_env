@@ -6,6 +6,7 @@ COPY --from=deps /usr/local/include /usr/local/include
 COPY --from=deps /usr/local/lib /usr/local/lib
 COPY --from=deps /usr/local/share /usr/local/share
 COPY --from=deps /usr/local/bin /usr/local/bin
+COPY --from=deps /workspace/darknet /workspace/darknet
 
 ARG user=dan
 ARG uid=1000
