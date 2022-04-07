@@ -34,3 +34,6 @@
 [submodule "ros/vision_opencv"]
 	path = ros/vision_opencv
 	url = https://github.com/ros-perception/vision_opencv
+[submodule "dev/stage0/darknet"]
+	path = dev/stage0/darknet
+	url = https://github.com/AlexeyAB/darknet
