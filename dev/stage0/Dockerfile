@@ -1,4 +1,4 @@
-FROM dtmoodie:ros-2004
+FROM opencv
 
 WORKDIR /workspace
 
@@ -6,7 +6,7 @@ COPY cereal cereal
 COPY pybind11 pybind11
 COPY dlib dlib
 COPY darknet darknet
-
+COPY colmap colmap
 #COPY ct ct
 #COPY ctext ctext
 #COPY minitensor minitensor
@@ -36,3 +36,30 @@ RUN cmake .. \
 
 WORKDIR /workspace/darknet
 RUN make -j24 GPU=1 CUDNN=1 CUDNN_HALF=1 LIBSO=1
+
+
+RUN apt-get update && apt-get install -y\
+    git \
+    ninja-build \
+    build-essential \
+    libboost-program-options-dev \
+    libboost-filesystem-dev \
+    libboost-graph-dev \
+    libboost-system-dev \
+    libeigen3-dev \
+    libflann-dev \
+    libfreeimage-dev \
+    libmetis-dev \
+    libgoogle-glog-dev \
+    libgtest-dev \
+    libsqlite3-dev \
+    libglew-dev \
+    qtbase5-dev \
+    libqt5opengl5-dev \
+    libcgal-dev \
+    libceres-dev
+
+WORKDIR /workspace/colmap/build
+RUN cmake .. \
+      -DCMAKE_CUDA_ARCHITECTURES=80
+RUN make -j24

@@ -21,7 +21,7 @@ fi
 
 sudo service ssh restart
 
-source /opt/ros/noetic/setup.bash
+#source /opt/ros/noetic/setup.bash
 export PYTHONPATH=/opt/ros/noetic/lib/python3.8/site-packages:/opt/ros/noetic/lib/python3/dist-packages
 
 $1
