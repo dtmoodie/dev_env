@@ -37,3 +37,6 @@
 [submodule "dev/stage0/darknet"]
 	path = dev/stage0/darknet
 	url = https://github.com/AlexeyAB/darknet
+[submodule "dev/stage0/colmap"]
+	path = dev/stage0/colmap
+	url = https://github.com/colmap/colmap.git
