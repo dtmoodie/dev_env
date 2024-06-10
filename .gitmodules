@@ -40,3 +40,6 @@
 [submodule "dev/stage0/colmap"]
 	path = dev/stage0/colmap
 	url = https://github.com/colmap/colmap.git
+[submodule "dev/stage0/TensorRT"]
+	path = dev/stage0/TensorRT
+	url = https://github.com/NVIDIA/TensorRT.git

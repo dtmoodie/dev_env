@@ -10,7 +10,7 @@ COPY colmap colmap
 #COPY ct ct
 #COPY ctext ctext
 #COPY minitensor minitensor
-
+COPY TensorRT tensorrt
 
 WORKDIR /workspace/cereal/build
 RUN cmake .. -DJUST_INSTALL_CEREAL=ON && \
@@ -37,6 +37,10 @@ RUN cmake .. \
 WORKDIR /workspace/darknet
 RUN make -j24 GPU=1 CUDNN=1 CUDNN_HALF=1 LIBSO=1
 
+WORKDIR /workspace/tensorrt/build
+RUN cmake .. && \
+    make -j24 && \
+    make install
 
 RUN apt-get update && apt-get install -y\
     git \
